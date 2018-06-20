@@ -62,6 +62,7 @@ class Menu():
 					time.sleep(0.2)
 		except KeyboardInterrupt:
 			self.Destroy()
+			
 	def MenuControl(self,LTaster,RTaster):
 		#Todo add 
 		if LTaster:#advances button value when the left button is pushed
@@ -71,7 +72,7 @@ class Menu():
 
 		if RTaster:#what happens when the right button is pushed. Changes in and out of menus	
 			if self.menu==0:
-				self.menu=self.menuButton
+				self.menu=self.menuButton+1
 			if self.menu==1:
 				if self.menuButton==1:#Todo add function to control Leds
 					pass
