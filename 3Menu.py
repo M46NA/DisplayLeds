@@ -150,4 +150,4 @@ class Menu():
 
 
 Menu = Menu()
-Menu.MenuControl#Rendert das menu
+Menu.MenuControl()#Rendert das menu
