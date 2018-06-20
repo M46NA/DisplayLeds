@@ -54,6 +54,7 @@ class Menu():
 	buttonValue=0
 
 	def MenuControl(self,LTaster,RTaster):
+		#Todo add 
 		if LTaster:#advances button value when the left button is pushed
 			self.menuButton +=1
 		if self.menuButton>7:
@@ -73,7 +74,6 @@ class Menu():
 			self.menu=0
 			self.menuButton=0
 		self.Render(self.menu, self.menuButton,self.buttonValue)
-
 
 	def Render(self,menu,menuButton,buttonValue):
 		print("made it here")
