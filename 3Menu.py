@@ -53,7 +53,7 @@ class Menu():
 	buttonValue=0
 
 	def MenuControl(self,LTaster,RTaster):
-		if LTaster:
+		if LTaster:#advances button value when the left button is pushed
 			menuButton +=1
 		if menuButton>7:
 			menuButton=0
