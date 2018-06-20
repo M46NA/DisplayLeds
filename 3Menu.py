@@ -163,6 +163,12 @@ class Menu():
 		disp.image(image)#outputs image to screen
 		disp.display()
 
+	def Destroy(self): #when called turns off display and takes care of all the loose ends
+		disp.clear()#clears display
+		disp.display()#updates display
+		gpio.cleanup()#releases gpio resources back
+
+
 
 Menu = Menu()
 Menu.MenuControl(True,False)#Rendert das menu
@@ -170,7 +176,6 @@ time.sleep(1)
 Menu.MenuControl(False,True)
 time.sleep(1)
 Menu.MenuControl(True,True)
-Menu.MenuControl(True,False)#Rendert das menu
 time.sleep(1)
 Menu.MenuControl(True,False)#Rendert das menu
 time.sleep(1)
@@ -190,3 +195,6 @@ Menu.MenuControl(True,False)#Rendert das menu
 time.sleep(1)
 Menu.MenuControl(True,False)#Rendert das menu
 time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.Destroy()#called to turn off the screen
