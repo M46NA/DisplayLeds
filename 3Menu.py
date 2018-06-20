@@ -48,16 +48,31 @@ h4=height/4
 
 
 class Menu():
+
 	menu=0
 	menuButton=0
 	buttonValue=0
 
 	def MenuControl(self,LTaster,RTaster):
 		if LTaster:#advances button value when the left button is pushed
-			menuButton +=1
-		if menuButton>7:
-			menuButton=0
-		Render(menu, menuButton,buttonValue)
+			self.menuButton +=1
+		if self.menuButton>7:
+			self.menuButton=0
+
+		if RTaster:#what happens when the right button is pushed. Changes in and out of menus	
+			if self.menu==0:
+				self.menu=self.menuButton
+			if self.menu==1:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+
+		if LTaster and RTaster:#goes back to the base menu when both buttons are pushed as an emergency
+			self.menu=0
+			self.menuButton=0
+		self.Render(self.menu, self.menuButton,self.buttonValue)
 
 
 	def Render(self,menu,menuButton,buttonValue):
@@ -150,4 +165,28 @@ class Menu():
 
 
 Menu = Menu()
-Menu.MenuControl()#Rendert das menu
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(False,True)
+time.sleep(1)
+Menu.MenuControl(True,True)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
+Menu.MenuControl(True,False)#Rendert das menu
+time.sleep(1)
