@@ -13,7 +13,7 @@ import time, os, sys, threading
 import Adafruit_SSD1306
 from PIL import Image, ImageDraw, ImageFont
 
-TasterAktiv = True#boolean für beenden der Schleife
+Aktiv = True#boolean für beenden der Schleife
 
 #setup of gpio
 gpio.setmode(gpio.BCM)
@@ -52,7 +52,16 @@ class Menu():
 	menu=0
 	menuButton=0
 	buttonValue=0
-
+	def CheckButtons(self):
+		try:
+			while Aktiv:
+				LTaster = not gpio.input(14)
+				RTaster = not gpio.input(15)
+				if LTaster or RTaster:
+					self.MenuControl(LTaster,RTaster)
+					time.sleep(0.2)
+		except KeyboardInterrupt:
+			self.Destroy()
 	def MenuControl(self,LTaster,RTaster):
 		#Todo add 
 		if LTaster:#advances button value when the left button is pushed
@@ -76,7 +85,6 @@ class Menu():
 		self.Render(self.menu, self.menuButton,self.buttonValue)
 
 	def Render(self,menu,menuButton,buttonValue):
-		print("made it here")
 
 		draw.rectangle((0,0,width-1,height-1), outline=255, fill=0) #Display leeren
 
@@ -171,30 +179,32 @@ class Menu():
 
 
 Menu = Menu()
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(False,True)
-time.sleep(1)
-Menu.MenuControl(True,True)
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.MenuControl(True,False)#Rendert das menu
-time.sleep(1)
-Menu.Destroy()#called to turn off the screen
+Menu.Render(0,0,0)#Initialisation of the menu
+Menu.CheckButtons()
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(False,True)
+# time.sleep(1)
+# Menu.MenuControl(True,True)
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.MenuControl(True,False)#Rendert das menu
+# time.sleep(1)
+# Menu.Destroy()#called to turn off the screen
