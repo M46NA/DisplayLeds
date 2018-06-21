@@ -13,7 +13,7 @@ import time, os, sys, threading
 import Adafruit_SSD1306
 from PIL import Image, ImageDraw, ImageFont
 
-Aktiv = True#boolean für beenden der Schleife
+Active = True#boolean für beenden der Schleife
 
 #setup of gpio
 gpio.setmode(gpio.BCM)
@@ -54,7 +54,7 @@ class Menu():
 	buttonValue=0
 	def CheckButtons(self):
 		try:
-			while Aktiv:
+			while Active:
 				LTaster = not gpio.input(14)
 				RTaster = not gpio.input(15)
 				if LTaster or RTaster:
@@ -72,18 +72,60 @@ class Menu():
 
 		if RTaster:#what happens when the right button is pushed. Changes in and out of menus	
 			if self.menu==0:
-				self.menu=self.menuButton+1
+				if self.menuButton==7:
+					self.Destroy()
+				else:
+					self.menu=self.menuButton+1
+
 			if self.menu==1:
 				if self.menuButton==1:#Todo add function to control Leds
 					pass
 				if self.menuButton==7:
 					self.menu=0
 
+			if self.menu==2:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+			if self.menu==3:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+			if self.menu==4:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+			if self.menu==5:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+			if self.menu==6:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+
+			if self.menu==7:
+				if self.menuButton==1:#Todo add function to control Leds
+					pass
+				if self.menuButton==7:
+					self.menu=0
+			self.menuButton=0
+
 
 		if LTaster and RTaster:#goes back to the base menu when both buttons are pushed as an emergency
 			self.menu=0
 			self.menuButton=0
-		self.Render(self.menu, self.menuButton,self.buttonValue)
+		if Active:
+			self.Render(self.menu, self.menuButton,self.buttonValue)
 
 	def Render(self,menu,menuButton,buttonValue):
 
@@ -173,6 +215,9 @@ class Menu():
 		disp.display()
 
 	def Destroy(self): #when called turns off display and takes care of all the loose ends
+		global Active
+		Active=False
+		time.sleep(0.5)
 		disp.clear()#clears display
 		disp.display()#updates display
 		gpio.cleanup()#releases gpio resources back
@@ -182,30 +227,3 @@ class Menu():
 Menu = Menu()
 Menu.Render(0,0,0)#Initialisation of the menu
 Menu.CheckButtons()
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(False,True)
-# time.sleep(1)
-# Menu.MenuControl(True,True)
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.MenuControl(True,False)#Rendert das menu
-# time.sleep(1)
-# Menu.Destroy()#called to turn off the screen
