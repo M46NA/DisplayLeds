@@ -13,6 +13,9 @@ import time, os, sys, threading
 import Adafruit_SSD1306
 from PIL import Image, ImageDraw, ImageFont
 
+#Import of the neopixel library
+from neopixel import *
+
 Active = True#boolean für beenden der Schleife
 
 #setup of gpio
@@ -46,6 +49,16 @@ h2=height/2
 h4=height/4
 
 
+
+# LED strip configuration:
+LED_COUNT      = 150      # Number of LED pixels.
+LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
+#LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
+LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
+LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
+LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
+LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
+LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 class Menu():
 
