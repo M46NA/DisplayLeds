@@ -60,6 +60,10 @@ LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
+strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+        # Intialize the library (must be called once before other functions).
+strip.begin()
+
 class Menu():
 
 	menu=0
@@ -90,9 +94,21 @@ class Menu():
 				else:
 					self.menu=self.menuButton+1
 
-			if self.menu==1:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
+			if self.menu==1:#Colors Menu
+				if self.menuButton==0:
+					Leds.simpleColor(strip,Color(0,255,0))
+				if self.menuButton==1:
+					Leds.simpleColor(strip,Color(255,0,0))
+				if self.menuButton==2:
+					Leds.simpleColor(strip, Color(0,0,255))
+				if self.menuButton==3:
+					Leds.simpleColor(strip,Color(255,0,255))
+				if self.menuButton==4:
+					Leds.simpleColor(strip,Color(0,255,255))
+				if self.menuButton==5:
+					Leds.simpleColor(strip,Color(69,255,0))
+				if self.menuButton==6:
+					Leds.simpleColor(strip,Color(255,255,0))
 				if self.menuButton==7:
 					self.menu=0
 
@@ -234,9 +250,19 @@ class Menu():
 		disp.clear()#clears display
 		disp.display()#updates display
 		gpio.cleanup()#releases gpio resources back
+		Leds.simpleColor(strip,Color(0,0,0))
+
+
+class LED():
+	def simpleColor(self,strip,color):
+		#displays the color chosen
+		for i in range(strip.numPixels()):
+			strip.setPixelColor(i, color)
+		strip.show()
 
 
 
 Menu = Menu()
+Leds =LED()
 Menu.Render(0,0,0)#Initialisation of the menu
 Menu.CheckButtons()
