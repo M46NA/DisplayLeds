@@ -119,7 +119,22 @@ class Menu():
 						Col =[0,255,0]
 						Leds.wave(strip,Col)
 					if self.menuButton==1:
-						Col =[169,255,0]
+						Col =[255,0,0]
+						Leds.wave(strip,Col)
+					if self.menuButton==2:
+						Col =[0,0,255]
+						Leds.wave(strip,Col)
+					if self.menuButton==3:
+						Col =[255,0,255]
+						Leds.wave(strip,Col)
+					if self.menuButton==4:
+						Col =[0,255,255]
+						Leds.wave(strip,Col)
+					if self.menuButton==5:
+						Col =[69,255,0]
+						Leds.wave(strip,Col)
+					if self.menuButton==6:
+						Col =[255,255,0]
 						Leds.wave(strip,Col)
 					if self.menuButton==7:
 						self.menu=0
