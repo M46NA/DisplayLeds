@@ -113,8 +113,12 @@ class Menu():
 					self.menu=0
 
 			if self.menu==2:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
+				if self.menuButton==0:#Todo add function to control Leds
+					Col =[0,255,0]
+					Leds.wave(strip,Col)
+				if self.menuButton==1:
+					Col =[169,255,0]
+					Leds.wave(strip,Col)
 				if self.menuButton==7:
 					self.menu=0
 
@@ -147,7 +151,7 @@ class Menu():
 					pass
 				if self.menuButton==7:
 					self.menu=0
-			self.menuButton=0
+			#self.menuButton=0
 
 
 		if LTaster and RTaster:#goes back to the base menu when both buttons are pushed as an emergency
@@ -259,6 +263,20 @@ class LED():
 		for i in range(strip.numPixels()):
 			strip.setPixelColor(i, color)
 		strip.show()
+
+	def wave(self,strip,color=[]):
+
+		for a in range(14):
+			for i in range(20,100):
+				for j in range(strip.numPixels()):
+					strip.setPixelColor(j,Color(color[0]*i/100,color[1]*i/100,color[2]*i/100))
+				strip.show()
+			time.sleep(0.1)
+			for i in range(100,20,-1):
+				for j in range(strip.numPixels()):
+					strip.setPixelColor(j,Color(color[0]*i/100,color[1]*i/100,color[2]*i/100))
+				strip.show()
+			time.sleep(0.1)
 
 
 
