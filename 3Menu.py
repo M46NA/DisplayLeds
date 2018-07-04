@@ -93,65 +93,72 @@ class Menu():
 					self.Destroy()
 				else:
 					self.menu=self.menuButton+1
+					self.menuButton=0
+			else:
 
-			if self.menu==1:#Colors Menu
-				if self.menuButton==0:
-					Leds.simpleColor(strip,Color(0,255,0))
-				if self.menuButton==1:
-					Leds.simpleColor(strip,Color(255,0,0))
-				if self.menuButton==2:
-					Leds.simpleColor(strip, Color(0,0,255))
-				if self.menuButton==3:
-					Leds.simpleColor(strip,Color(255,0,255))
-				if self.menuButton==4:
-					Leds.simpleColor(strip,Color(0,255,255))
-				if self.menuButton==5:
-					Leds.simpleColor(strip,Color(69,255,0))
-				if self.menuButton==6:
-					Leds.simpleColor(strip,Color(255,255,0))
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==1:#Colors Menu
+					if self.menuButton==0:
+						Leds.simpleColor(strip,Color(0,255,0))
+					if self.menuButton==1:
+						Leds.simpleColor(strip,Color(255,0,0))
+					if self.menuButton==2:
+						Leds.simpleColor(strip, Color(0,0,255))
+					if self.menuButton==3:
+						Leds.simpleColor(strip,Color(255,0,255))
+					if self.menuButton==4:
+						Leds.simpleColor(strip,Color(0,255,255))
+					if self.menuButton==5:
+						Leds.simpleColor(strip,Color(69,255,0))
+					if self.menuButton==6:
+						Leds.simpleColor(strip,Color(255,255,0))
+					if self.menuButton==7:
+						self.menu=0
 
-			if self.menu==2:
-				if self.menuButton==0:#Todo add function to control Leds
-					Col =[0,255,0]
-					Leds.wave(strip,Col)
-				if self.menuButton==1:
-					Col =[169,255,0]
-					Leds.wave(strip,Col)
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==2:
+					if self.menuButton==0:#Todo add function to control Leds
+						Col =[0,255,0]
+						Leds.wave(strip,Col)
+					if self.menuButton==1:
+						Col =[169,255,0]
+						Leds.wave(strip,Col)
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
-			if self.menu==3:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==3:
+					if self.menuButton==1:#Todo add function to control Leds
+						pass
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
-			if self.menu==4:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==4:
+					if self.menuButton==1:#Todo add function to control Leds
+						pass
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
-			if self.menu==5:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==5:
+					if self.menuButton==1:#Todo add function to control Leds
+						pass
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
-			if self.menu==6:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
-				if self.menuButton==7:
-					self.menu=0
+				if self.menu==6:
+					if self.menuButton==1:#Todo add function to control Leds
+						pass
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
-			if self.menu==7:
-				if self.menuButton==1:#Todo add function to control Leds
-					pass
-				if self.menuButton==7:
-					self.menu=0
-			#self.menuButton=0
+				if self.menu==7:
+					if self.menuButton==1:#Todo add function to control Leds
+						pass
+					if self.menuButton==7:
+						self.menu=0
+						self.menuButton=0
 
 
 		if LTaster and RTaster:#goes back to the base menu when both buttons are pushed as an emergency
